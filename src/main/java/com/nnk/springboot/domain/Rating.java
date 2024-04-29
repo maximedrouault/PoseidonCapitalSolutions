@@ -25,7 +25,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "MoodysRating is mandatory")
+    @NotBlank(message = "moodysRating is mandatory")
     @Length(max = 125)
     private String moodysRating;
 
