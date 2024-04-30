@@ -1,23 +1,37 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
-import java.sql.Timestamp;
+import static com.nnk.springboot.constants.Constants.MAX_DOUBLE;
 
 
 @Entity
 @Table(name = "curvepoint")
+@DynamicUpdate
 @Data
 public class CurvePoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
-    private Integer curveId;
-    private Timestamp asOfDate;
+
+//    private Integer curveId;
+//    private Timestamp asOfDate;
+
+    @NotNull(message = "Term is mandatory")
+    @Positive
+    @DecimalMax(value = MAX_DOUBLE)
     private Double term;
+
+    @NotNull(message = "Value is mandatory")
+    @Positive
+    @DecimalMax(value = MAX_DOUBLE)
     private Double value;
-    private Timestamp creationDate;
+
+//    private Timestamp creationDate;
 }
