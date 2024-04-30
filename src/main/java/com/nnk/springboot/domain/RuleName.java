@@ -3,10 +3,12 @@ package com.nnk.springboot.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "rulename")
+@DynamicUpdate
 @Data
 public class RuleName {
 
