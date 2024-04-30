@@ -2,6 +2,7 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -20,8 +21,12 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    private Integer curveId;
-//    private Timestamp asOfDate;
+    @NotNull(message = "curveId is mandatory")
+    @Positive
+    @Max(127)
+    private Integer curveId;
+
+    //    private Timestamp asOfDate;
 
     @NotNull(message = "Term is mandatory")
     @Positive
