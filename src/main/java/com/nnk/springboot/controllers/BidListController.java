@@ -60,7 +60,7 @@ public class BidListController {
             return "bidList/update";
         }
 
-        bidList.setBidListId(id);
+        bidList.setId(id);
         bidListRepository.save(bidList);
         model.addAttribute("bidLists", bidListRepository.findAll());
 

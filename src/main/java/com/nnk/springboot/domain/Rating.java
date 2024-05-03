@@ -1,6 +1,9 @@
 package com.nnk.springboot.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +16,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name = "rating")
 @DynamicUpdate
 @Data
 @AllArgsConstructor
@@ -39,6 +41,6 @@ public class Rating {
 
     @NotNull(message = "orderNumber is mandatory")
     @Positive
-    @Max(127)
+    @Max(Integer.MAX_VALUE)
     private Integer orderNumber;
 }
