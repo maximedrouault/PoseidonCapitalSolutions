@@ -2,7 +2,10 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.sql.Timestamp;
@@ -13,6 +16,9 @@ import static com.nnk.springboot.constants.Constants.MAX_DOUBLE;
 @Entity
 @DynamicUpdate
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CurvePoint {
 
     @Id
