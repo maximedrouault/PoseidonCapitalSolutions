@@ -129,4 +129,12 @@ public class RatingControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/rating/list"));
     }
+
+    @Test
+    @WithMockUser(username = "usertest")
+    void shouldThrowExceptionWhenRatingToDeleteIsNotFound() {
+        assertThrows(ServletException.class, () -> mockMvc.perform(get("/rating/delete/{id}", 10))
+                .andExpect(status().isOk())
+                .andExpect(view().name("rating/delete")));
+    }
 }

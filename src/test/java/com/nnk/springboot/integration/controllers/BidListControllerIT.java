@@ -127,4 +127,12 @@ public class BidListControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/bidList/list"));
     }
+
+    @Test
+    @WithMockUser(username = "usertest")
+    void shouldThrowExceptionWhenBidListToDeleteIsNotFound() {
+        assertThrows(ServletException.class, () -> mockMvc.perform(get("/bidList/delete/{id}", 10))
+                .andExpect(status().isOk())
+                .andExpect(view().name("bidList/delete")));
+    }
 }

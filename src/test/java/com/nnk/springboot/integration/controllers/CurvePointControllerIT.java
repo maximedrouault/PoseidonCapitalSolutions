@@ -127,4 +127,12 @@ public class CurvePointControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/curvePoint/list"));
     }
+
+    @Test
+    @WithMockUser(username = "usertest")
+    void shouldThrowExceptionWhenCurvePointToDeleteIsNotFound() {
+        assertThrows(ServletException.class, () -> mockMvc.perform(get("/curvePoint/delete/{id}", 10))
+                .andExpect(status().isOk())
+                .andExpect(view().name("curvePoint/delete")));
+    }
 }

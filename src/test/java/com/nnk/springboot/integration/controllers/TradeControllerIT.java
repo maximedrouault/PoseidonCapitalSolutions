@@ -127,4 +127,12 @@ public class TradeControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/trade/list"));
     }
+
+    @Test
+    @WithMockUser(username = "usertest")
+    void shouldThrowExceptionWhenTradeToDeleteIsNotFound() {
+        assertThrows(ServletException.class, () -> mockMvc.perform(get("/trade/delete/{id}", 10))
+                .andExpect(status().isOk())
+                .andExpect(view().name("trade/delete")));
+    }
 }

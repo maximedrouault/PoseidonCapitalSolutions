@@ -134,4 +134,12 @@ public class RuleNameControllerIT {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/ruleName/list"));
     }
+
+    @Test
+    @WithMockUser(username = "usertest")
+    void shouldThrowExceptionWhenRuleNameToDeleteIsNotFound() {
+        assertThrows(ServletException.class, () -> mockMvc.perform(get("/ruleName/delete/{id}", 10))
+                .andExpect(status().isOk())
+                .andExpect(view().name("ruleName/delete")));
+    }
 }
