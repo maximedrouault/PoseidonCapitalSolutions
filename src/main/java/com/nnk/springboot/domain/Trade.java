@@ -5,7 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
@@ -17,6 +20,9 @@ import static com.nnk.springboot.constants.Constants.MAX_DOUBLE;
 @Entity
 @DynamicUpdate
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Trade {
 
     @Id

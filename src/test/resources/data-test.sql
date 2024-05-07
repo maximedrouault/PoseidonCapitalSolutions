@@ -13,3 +13,6 @@ VALUES (5, 10, 50, 30);
 
 INSERT INTO rule_name(id, name, description, json, template, sql_str, sql_part)
 VALUES (5,'Name test', 'Description test', 'Json test', 'Template test', 'SQL Str test', 'SQL Part test');
+
+INSERT INTO trade(id, account, type, buy_quantity)
+VALUES (5, 'Account test', 'Type test', 30)
