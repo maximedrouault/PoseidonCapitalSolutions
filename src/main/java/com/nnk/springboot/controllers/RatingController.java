@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -21,8 +23,9 @@ public class RatingController {
 
 
     @RequestMapping("/rating/list")
-    public String home(Model model)
+    public String home(Model model, Principal principal)
     {
+        model.addAttribute("username", principal.getName());
         model.addAttribute("ratings", ratingRepository.findAll());
 
         return "rating/list";

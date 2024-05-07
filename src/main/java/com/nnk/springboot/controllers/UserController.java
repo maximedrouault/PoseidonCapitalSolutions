@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -22,9 +24,11 @@ public class UserController {
 
 
     @RequestMapping("/user/list")
-    public String home(Model model)
+    public String home(Model model, Principal principal)
     {
+        model.addAttribute("username", principal.getName());
         model.addAttribute("users", userRepository.findAll());
+
         return "user/list";
     }
 
@@ -40,6 +44,7 @@ public class UserController {
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
             model.addAttribute("users", userRepository.findAll());
+
             return "redirect:/user/list";
         }
         return "user/add";
@@ -50,6 +55,7 @@ public class UserController {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         user.setPassword("");
         model.addAttribute("user", user);
+
         return "user/update";
     }
 
@@ -65,6 +71,7 @@ public class UserController {
         user.setId(id);
         userRepository.save(user);
         model.addAttribute("users", userRepository.findAll());
+
         return "redirect:/user/list";
     }
 
@@ -73,6 +80,7 @@ public class UserController {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         userRepository.delete(user);
         model.addAttribute("users", userRepository.findAll());
+
         return "redirect:/user/list";
     }
 }

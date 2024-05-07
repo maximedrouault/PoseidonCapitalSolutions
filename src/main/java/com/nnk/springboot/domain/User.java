@@ -24,7 +24,7 @@ public class User {
     @Length(min = 8, max = 125)
     @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter")
     @Pattern(regexp = ".*[0-9].*", message = "Password must contain at least one digit")
-    @Pattern(regexp = ".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/].*", message = "Password must contain at least one symbol")
+    @Pattern(regexp = ".*[!?@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/].*", message = "Password must contain at least one symbol")
     private String password;
 
     @NotBlank(message = "FullName is mandatory")
