@@ -31,7 +31,7 @@ public class RatingControllerIT {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"/rating/list", "/rating/add", "/rating/add", "/rating/validate", "/rating/update", "/rating/delete", "/wrongUri"})
+    @ValueSource(strings = {"/rating/list", "/rating/add", "/rating/validate", "/rating/update", "/rating/delete", "/wrongUri"})
     void shouldReturnLoginFormWhenUnauthenticated(String endpointUri) throws Exception{
         mockMvc.perform(get(endpointUri))
                 .andExpect(status().is3xxRedirection())
