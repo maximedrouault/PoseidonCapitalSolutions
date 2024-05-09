@@ -81,12 +81,12 @@ public class TradeControllerIT {
     @Test
     @WithMockUser(username = "usertest")
     void shouldReturnUpdateTradeFormWhenTradeToUpdateIsFound() throws Exception {
-        Trade expectedtrade = Trade.builder().id(5).account("Account test").type("Type test").buyQuantity(30.0).build();
+        Trade expectedTrade = Trade.builder().id(5).account("Account test").type("Type test").buyQuantity(30.0).build();
 
         mockMvc.perform(get("/trade/update/{id}", 5))
                 .andExpect(status().isOk())
                 .andExpect(view().name("trade/update"))
-                .andExpect(model().attribute("trade", equalTo(expectedtrade)));
+                .andExpect(model().attribute("trade", equalTo(expectedTrade)));
     }
 
     @Test

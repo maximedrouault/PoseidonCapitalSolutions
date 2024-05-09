@@ -3,13 +3,19 @@ package com.nnk.springboot.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 
 @Entity
 @Table(name = "`user`")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
