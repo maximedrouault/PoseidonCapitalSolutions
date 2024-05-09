@@ -15,14 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
-
+/**
+ * UserController is a Spring MVC Controller that handles HTTP requests related to User.
+ * It uses UserRepository to interact with the database.
+ */
 @Controller
 @RequiredArgsConstructor
 public class UserController {
 
+    /**
+     * UserRepository instance for interacting with the database.
+     */
     private final UserRepository userRepository;
 
 
+    /**
+     * Handles the request to get the list of all Users.
+     * @param model the Model instance
+     * @param principal the Principal instance
+     * @return the view name
+     */
     @RequestMapping("/user/list")
     public String home(Model model, Principal principal)
     {
@@ -32,11 +44,23 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * Handles the request to show the form for adding a new User.
+     * @param user the User instance
+     * @return the view name
+     */
     @GetMapping("/user/add")
-    public String addUser(User bid) {
+    public String addUser(User user) {
         return "user/add";
     }
 
+    /**
+     * Handles the request to validate and save a new User.
+     * @param user the User instance
+     * @param result the BindingResult instance
+     * @param model the Model instance
+     * @return the view name
+     */
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
         if (!result.hasErrors()) {
@@ -50,6 +74,12 @@ public class UserController {
         return "user/add";
     }
 
+    /**
+     * Handles the request to show the form for updating a User.
+     * @param id the id of the User
+     * @param model the Model instance
+     * @return the view name
+     */
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
@@ -59,6 +89,14 @@ public class UserController {
         return "user/update";
     }
 
+    /**
+     * Handles the request to update a User.
+     * @param id the id of the User
+     * @param user the User instance
+     * @param result the BindingResult instance
+     * @param model the Model instance
+     * @return the view name
+     */
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid User user,
                              BindingResult result, Model model) {
@@ -75,6 +113,12 @@ public class UserController {
         return "redirect:/user/list";
     }
 
+    /**
+     * Handles the request to delete a User.
+     * @param id the id of the User
+     * @param model the Model instance
+     * @return the view name
+     */
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));

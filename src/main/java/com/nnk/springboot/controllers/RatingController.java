@@ -14,14 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
-
+/**
+ * RatingController is a Spring MVC Controller that handles HTTP requests related to Rating.
+ * It uses RatingRepository to interact with the database.
+ */
 @Controller
 @RequiredArgsConstructor
 public class RatingController {
 
+    /**
+     * RatingRepository instance for interacting with the database.
+     */
     private final RatingRepository ratingRepository;
 
 
+    /**
+     * Handles the request to get the list of all Ratings.
+     * @param model the Model instance
+     * @param principal the Principal instance
+     * @return the view name
+     */
     @RequestMapping("/rating/list")
     public String home(Model model, Principal principal)
     {
@@ -31,11 +43,23 @@ public class RatingController {
         return "rating/list";
     }
 
+    /**
+     * Handles the request to show the form for adding a new Rating.
+     * @param rating the Rating instance
+     * @return the view name
+     */
     @GetMapping("/rating/add")
     public String addRatingForm(Rating rating) {
         return "rating/add";
     }
 
+    /**
+     * Handles the request to validate and save a new Rating.
+     * @param rating the Rating instance
+     * @param result the BindingResult instance
+     * @param model the Model instance
+     * @return the view name
+     */
     @PostMapping("/rating/validate")
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         if (!result.hasErrors()) {
@@ -48,6 +72,12 @@ public class RatingController {
         return "rating/add";
     }
 
+    /**
+     * Handles the request to show the form for updating a Rating.
+     * @param id the id of the Rating
+     * @param model the Model instance
+     * @return the view name
+     */
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Rating rating = ratingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid rating Id:" + id));
@@ -56,6 +86,14 @@ public class RatingController {
         return "rating/update";
     }
 
+    /**
+     * Handles the request to update a Rating.
+     * @param id the id of the Rating
+     * @param rating the Rating instance
+     * @param result the BindingResult instance
+     * @param model the Model instance
+     * @return the view name
+     */
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                              BindingResult result, Model model) {
@@ -70,6 +108,12 @@ public class RatingController {
         return "redirect:/rating/list";
     }
 
+    /**
+     * Handles the request to delete a Rating.
+     * @param id the id of the Rating
+     * @param model the Model instance
+     * @return the view name
+     */
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         Rating rating = ratingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid rating Id:" + id));
