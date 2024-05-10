@@ -1,7 +1,6 @@
 package com.nnk.springboot.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -12,22 +11,10 @@ public class HomeController {
 
 	/**
 	 * Handles the request to show the home page.
-	 * @param model the Model instance
 	 * @return the view name
 	 */
 	@RequestMapping("/")
-	public String home(Model model) {
-		return "home";
-	}
-
-	/**
-	 * Handles the request to show the admin home page.
-	 * Redirects to the bid list page.
-	 * @param model the Model instance
-	 * @return the view name
-	 */
-	@RequestMapping("/admin/home")
-	public String adminHome(Model model) {
+	public String home() {
 		return "redirect:/bidList/list";
 	}
 }

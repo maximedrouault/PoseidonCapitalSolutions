@@ -31,6 +31,7 @@ public class SecurityConfig {
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**").permitAll()
+                        .requestMatchers("/images/**").permitAll()
                         .requestMatchers("/user/**").hasRole("ADMIN")
                         .requestMatchers("/app/secure/**").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -41,7 +42,7 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/bidList/list", true)
                         .permitAll())
                 .logout(logout -> logout
-                        .logoutUrl("/app-logout")
+                        .logoutUrl("/app/logout")
                         .logoutSuccessUrl("/app/login?logout")
                         .permitAll())
                 .exceptionHandling(exception -> exception

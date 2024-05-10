@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title> Spring Boot </title>
+    <title>Poseidon Capital Solutions</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css" >
 </head>
 <body>
+    <div class="container text-center mt-5">
+        <img src="/images/logo.png" class="col-6" alt="Logo">
+    </div>
     <form class="container" th:action="@{/app/login}" method="post">
-        <div class="row justify-content-center pt-5 mt-5">
+        <div class="row justify-content-center mt-5">
             <div class="col-5">
                 <div class="input-group mb-5">
                     <input type="text" class="form-control border-start-0 fs-5" id="username" name="username" placeholder="Username" aria-label="Username" aria-describedby="username">
