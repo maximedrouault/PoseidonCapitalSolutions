@@ -45,11 +45,13 @@ public class RatingController {
 
     /**
      * Handles the request to show the form for adding a new Rating.
-     * @param rating the Rating instance
+     * @param model the Model instance
      * @return the view name
      */
     @GetMapping("/rating/add")
-    public String addRatingForm(Rating rating) {
+    public String addRatingForm(Model model) {
+        model.addAttribute("rating", Rating.builder().build());
+
         return "rating/add";
     }
 

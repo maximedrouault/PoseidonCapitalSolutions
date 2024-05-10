@@ -45,11 +45,13 @@ public class TradeController {
 
     /**
      * Handles the request to show the form for adding a new Trade.
-     * @param trade the Trade instance
+     * @param model the Model instance
      * @return the view name
      */
     @GetMapping("/trade/add")
-    public String addTradeForm(Trade trade) {
+    public String addTradeForm(Model model) {
+        model.addAttribute("trade", Trade.builder().build());
+
         return "trade/add";
     }
 

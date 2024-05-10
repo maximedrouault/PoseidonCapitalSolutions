@@ -45,11 +45,13 @@ public class BidListController {
 
     /**
      * Handles the request to show the form for adding a new BidList.
-     * @param bid the BidList instance
+     * @param model the Model instance
      * @return the view name
      */
     @GetMapping("/bidList/add")
-    public String addBidForm(BidList bid) {
+    public String addBidForm(Model model) {
+        model.addAttribute("bidList", BidList.builder().build());
+
         return "bidList/add";
     }
 

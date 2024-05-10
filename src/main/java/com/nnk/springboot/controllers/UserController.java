@@ -46,11 +46,13 @@ public class UserController {
 
     /**
      * Handles the request to show the form for adding a new User.
-     * @param user the User instance
+     * @param model the Model instance
      * @return the view name
      */
     @GetMapping("/user/add")
-    public String addUser(User user) {
+    public String addUser(Model model) {
+        model.addAttribute("user", User.builder().build());
+
         return "user/add";
     }
 

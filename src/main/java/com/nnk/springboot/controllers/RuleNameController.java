@@ -45,11 +45,13 @@ public class RuleNameController {
 
     /**
      * Handles the request to show the form for adding a new RuleName.
-     * @param bid the RuleName instance
+     * @param model the Model instance
      * @return the view name
      */
     @GetMapping("/ruleName/add")
-    public String addRuleForm(RuleName bid) {
+    public String addRuleForm(Model model) {
+        model.addAttribute("ruleName", RuleName.builder().build());
+
         return "ruleName/add";
     }
 

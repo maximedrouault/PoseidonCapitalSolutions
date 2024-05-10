@@ -45,11 +45,13 @@ public class CurveController {
 
     /**
      * Handles the request to show the form for adding a new CurvePoint.
-     * @param curvePoint the CurvePoint instance
+     * @param model the Model instance
      * @return the view name
      */
     @GetMapping("/curvePoint/add")
-    public String addCurvePointForm(CurvePoint curvePoint) {
+    public String addCurvePointForm(Model model) {
+        model.addAttribute("curvePoint", CurvePoint.builder().build());
+
         return "curvePoint/add";
     }
 
