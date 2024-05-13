@@ -66,6 +66,12 @@ public class UserController {
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
         if (!result.hasErrors()) {
+            if (userRepository.existsByUsername(user.getUsername())) {
+                result.rejectValue("username", "error.user", "Username already exists");
+
+                return "user/add";
+            }
+
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
@@ -103,6 +109,12 @@ public class UserController {
     public String updateUser(@PathVariable("id") Integer id, @Valid User user,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
+            return "user/update";
+        }
+
+        if (userRepository.existsByUsername(user.getUsername())) {
+            result.rejectValue("username", "error.user", "Username already exists");
+
             return "user/update";
         }
 

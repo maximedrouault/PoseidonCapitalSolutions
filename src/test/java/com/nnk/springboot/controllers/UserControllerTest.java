@@ -89,6 +89,20 @@ public class UserControllerTest {
 
     @Test
     @WithMockUser(username = "admin", roles = "ADMIN")
+    void shouldReturnAddUserFormWhenUserToAddAlreadyExists() throws Exception {
+        mockMvc.perform(post("/user/validate")
+                        .param("fullname", "Fullname add test")
+                        .param("username", "usertest")
+                        .param("password", "PasswordTest123#")
+                        .param("role", "USER")
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("user/add"))
+                .andExpect(model().attributeHasFieldErrors("user"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     void shouldReturnUpdateUserFormWhenUserToUpdateIsFound() throws Exception {
         User expectedUser = User.builder().id(2).fullname("User Test").username("usertest").password("").role("USER").build();
 
@@ -112,6 +126,20 @@ public class UserControllerTest {
         mockMvc.perform(post("/user/update/{id}", 2)
                 .param("fullname", "")
                 .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("user/update"))
+                .andExpect(model().attributeHasFieldErrors("user"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
+    void shouldReturnUpdateUserFormWhenUserToUpdateAlreadyExists() throws Exception {
+        mockMvc.perform(post("/user/update/{id}", 2)
+                        .param("fullname", "Fullname update test")
+                        .param("username", "usertest")
+                        .param("password", "PasswordTest123#")
+                        .param("role", "USER")
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("user/update"))
                 .andExpect(model().attributeHasFieldErrors("user"));

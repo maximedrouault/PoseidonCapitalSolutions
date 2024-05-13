@@ -33,6 +33,7 @@ public class User {
      */
     @NotBlank(message = "Username is mandatory")
     @Length(max = 125)
+    @Column(unique = true)
     private String username;
 
     /**
