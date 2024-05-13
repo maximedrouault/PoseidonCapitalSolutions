@@ -1,4 +1,4 @@
-package com.nnk.springboot.integration.controllers;
+package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.CurvePoint;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
-public class CurvePointControllerIT {
+public class CurvePointControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

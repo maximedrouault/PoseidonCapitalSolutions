@@ -1,7 +1,6 @@
-package com.nnk.springboot.integration.security;
+package com.nnk.springboot.security;
 
 import com.nnk.springboot.domain.User;
-import com.nnk.springboot.security.CustomUserDetailsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
-public class CustomUserDetailsServiceIT {
+public class CustomUserDetailsServiceTest {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;

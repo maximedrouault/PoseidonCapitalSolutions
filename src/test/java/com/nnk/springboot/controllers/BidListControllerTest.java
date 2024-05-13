@@ -1,4 +1,4 @@
-package com.nnk.springboot.integration.controllers;
+package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
-public class BidListControllerIT {
+public class BidListControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

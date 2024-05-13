@@ -125,7 +125,6 @@
                 <version>3.2.5</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/PoseidonCapitalSolutionsApplicationTests.java</exclude>
                         <exclude>**/*IT.java</exclude>
                     </excludes>
                     <includes>
