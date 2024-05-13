@@ -49,7 +49,7 @@ public class BidListRepositoryTest {
 
     @Test
     void shouldReturnUpdatedBidListWhenUpdateBidList() {
-        BidList bidListToUpdate = BidList.builder().account("Account test").type("Type test").bidQuantity(10d).build();
+        BidList bidListToUpdate = BidList.builder().account("Account save test").type("Type save test").bidQuantity(10d).build();
 
         BidList updatedBidList = bidListRepository.save(bidListToUpdate);
 
