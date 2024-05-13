@@ -177,8 +177,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.6.3</version>
                 <configuration>
-                    <sourcepath>${project.build.sourceDirectory}</sourcepath>
-                    <excludePackageNames>**/test/**</excludePackageNames>
+                    <doclint>none</doclint>
                 </configuration>
             </plugin>
         </plugins>
