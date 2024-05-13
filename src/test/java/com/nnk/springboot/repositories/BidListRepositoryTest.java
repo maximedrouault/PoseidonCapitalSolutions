@@ -37,8 +37,8 @@ public class BidListRepositoryTest {
     @ParameterizedTest
     @CsvSource({
             ",,",
-            "'', '', -1",
-            "' ', ' ', 0",
+            "'', '', -1.0",
+            "' ', ' ', 0.0",
             "'...............................', '...............................', 1.7976931348623157E309"
     })
     void shouldThrowExceptionWhenBidListToSaveIsNotValid(String account, String type, Double bidQuantity) {
@@ -79,14 +79,15 @@ public class BidListRepositoryTest {
         Optional<BidList> foundBidList = bidListRepository.findById(bidListToFindId);
 
         assertTrue(foundBidList.isPresent());
+        assertEquals(foundBidList.get().getId(), 5);
     }
 
     @Test
-    void shouldReturnFoundBidListWhenFindBidList2() {
+    void shouldNotFindBidListWhenBidListDoesNotExist() {
         int bidListToFindId = 99;
-        Optional<BidList> foundBidList = bidListRepository.findById(bidListToFindId);
+        Optional<BidList> optionalFoundBidList = bidListRepository.findById(bidListToFindId);
 
-        assertTrue(foundBidList.isEmpty());
+        assertTrue(optionalFoundBidList.isEmpty());
     }
 
     @Test
