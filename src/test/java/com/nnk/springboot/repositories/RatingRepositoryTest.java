@@ -55,11 +55,11 @@ public class RatingRepositoryTest {
 
     @Test
     void shouldReturnUpdatedRatingWhenUpdateRating() {
-        Rating ratingToUpdate = Rating.builder().moodysRating("Moodys Rating update test").sandPRating("Sand PRating update test").fitchRating("Fitch Rating update test").orderNumber(20).build();
+        Rating ratingToUpdate = Rating.builder().id(5).moodysRating("Moodys Rating update test").sandPRating("Sand PRating update test").fitchRating("Fitch Rating update test").orderNumber(20).build();
 
         Rating updatedRating = ratingRepository.save(ratingToUpdate);
 
-        assertNotNull(updatedRating.getId());
+        assertEquals(updatedRating.getId(), 5);
         assertEquals(ratingToUpdate, updatedRating);
     }
 

@@ -26,7 +26,7 @@ public class BidListRepositoryTest {
 
     @Test
     void shouldReturnSavedBidListWhenSaveBidList() {
-        BidList bidListToSave = BidList.builder().account("Account test").type("Type test").bidQuantity(10d).build();
+        BidList bidListToSave = BidList.builder().account("Account save test").type("Type save test").bidQuantity(10d).build();
 
         BidList savedBidList = bidListRepository.save(bidListToSave);
 
@@ -49,11 +49,11 @@ public class BidListRepositoryTest {
 
     @Test
     void shouldReturnUpdatedBidListWhenUpdateBidList() {
-        BidList bidListToUpdate = BidList.builder().account("Account save test").type("Type save test").bidQuantity(10d).build();
+        BidList bidListToUpdate = BidList.builder().id(5).account("Account update test").type("Type update test").bidQuantity(10d).build();
 
         BidList updatedBidList = bidListRepository.save(bidListToUpdate);
 
-        assertNotNull(updatedBidList.getId());
+        assertEquals(updatedBidList.getId(), 5);
         assertEquals(bidListToUpdate, updatedBidList);
     }
 

@@ -49,11 +49,11 @@ public class CurvePointRepositoryTest {
 
     @Test
     void shouldReturnUpdatedCurvePointWhenUpdateCurvePoint() {
-        CurvePoint curvePointToUpdate = CurvePoint.builder().curveId(20).term(30d).value(40d).build();
+        CurvePoint curvePointToUpdate = CurvePoint.builder().id(5).curveId(20).term(30d).value(40d).build();
 
         CurvePoint updatedCurvePoint = curvePointRepository.save(curvePointToUpdate);
 
-        assertNotNull(updatedCurvePoint.getId());
+        assertEquals(updatedCurvePoint.getId(), 5);
         assertEquals(curvePointToUpdate, updatedCurvePoint);
     }
 
