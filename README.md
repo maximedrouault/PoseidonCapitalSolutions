@@ -57,7 +57,8 @@ Pour exécuter l'application, utilisez la commande Maven suivante :
 mvn spring-boot:run
 ```
 
-**L'application sera accessible à l'adresse suivante : [http://localhost:8080](http://localhost:8080)**
+- **L'application est accessible par défaut à l'adresse suivante : [http://localhost:8080](http://localhost:8080)**.
+- Le port 8080 par défaut peut être changé, au besoin, dans le fichier `src/main/resources/application.properties`
 
 
 ## Utilisation
@@ -78,8 +79,8 @@ Pour vous connecter à l'application, des utilisateurs fictifs sont présents av
 ### Gestion des utilisateurs
 
 - Les utilisateurs peuvent se connecter via le formulaire de connexion.
-- Des roles sont définis pour les utilisateurs : **ADMIN** ou **USER** afin de sécuriser les différents accès.
-- Les **ADMIN** ont accès à la fonctionnalité de gestion des utilisateurs **USER MANAGEMENT**
+- Des rôles sont définis pour les utilisateurs : **ADMIN** ou **USER** afin de sécuriser les différents accès.
+- Les **ADMIN** ont accès à la fonctionnalité de gestion des utilisateurs **USER MANAGEMENT**.
 
 ### CRUD
 
